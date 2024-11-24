@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require "puma"
-require "puma/plugin"
+require 'puma'
+require 'puma/plugin'
 
 Puma::Plugin.create do
   def start(launcher)
@@ -40,6 +40,8 @@ Puma::Plugin.create do
         else
           puts "[puma plugin shellscript] Command failed with status: #{status.exitstatus}"
         end
+
+        sleep 2
       rescue Errno::EIO => e
         Rails.logger.error "[puma plugin shellscript] Error: #{e}"
       ensure

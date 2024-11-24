@@ -1,4 +1,6 @@
-# Puma::Plugin::Shellscript
+# PumaPluginShellscript
+
+This is a gem that executes shell scripts as a Puma plugin. It is designed to run the command again after it finishes executing.
 
 ## Installation
 

@@ -18,7 +18,6 @@ require 'fileutils'
             puts "[puma plugin shellscript] Killing child process #{child_pid}"
             begin
               Process.kill('TERM', child_pid)
-              Process.wait(child_pid)
             rescue Errno::ESRCH, Errno::ECHILD => e
               puts "[puma plugin shellscript] Failed to kill process: #{e.message}"
             ensure

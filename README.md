@@ -1,28 +1,58 @@
 # Puma::Plugin::Shellscript
 
-TODO: Delete this and the text below, and describe your gem
-
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/puma/plugin/shellscript`. To experiment with that code, run `bin/console` for an interactive prompt.
-
 ## Installation
-
-TODO: Replace `UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG` with your gem name right after releasing it to RubyGems.org. Please do not do it earlier due to security reasons. Alternatively, replace this section with instructions to install your gem from git if you don't plan to release to RubyGems.org.
 
 Install the gem and add to the application's Gemfile by executing:
 
 ```bash
-bundle add UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG
+bundle add puma-plugin-shellscript
 ```
 
 If bundler is not being used to manage dependencies, install the gem by executing:
 
 ```bash
-gem install UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG
+gem install puma-plugin-shellscript
 ```
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+# config/puma.rb
+[...]
+plugin :shellscript if ENV['PUMA_PLUGIN_SHELLSCRIPT'].present?
+```
+
+```
+PUMA_PLUGIN_SHELLSCRIPT='echo test!!!!; sleep 5' be rails s
+```
+
+```
+=> Booting Puma
+=> Rails 8.0.0 application starting in development
+=> Run `bin/rails server --help` for more startup options
+Puma starting in single mode...
+* Puma version: 6.4.3 (ruby 3.2.2-p53) ("The Eagle of Durango")
+*  Min threads: 3
+*  Max threads: 3
+*  Environment: development
+*          PID: 55927
+* Listening on http://127.0.0.1:3000
+* Listening on http://[::1]:3000
+[puma plugin shellscript] Running shellscript: echo test!!!!; sleep 5
+Use Ctrl-C to stop
+test!!!!
+[puma plugin shellscript] Command exited successfully
+[puma plugin shellscript] Running shellscript: echo test!!!!; sleep 5
+test!!!!
+[puma plugin shellscript] Command exited successfully
+[puma plugin shellscript] Running shellscript: echo test!!!!; sleep 5
+^C[puma plugin shellscript] Killing child process 55947
+test!!!!
+[puma plugin shellscript] Command failed with status:
+[puma plugin shellscript] Running shellscript: echo test!!!!; sleep 5
+[puma plugin shellscript] Failed to kill process: No child processes
+- Gracefully stopping, waiting for requests to finish
+```
 
 ## Development
 

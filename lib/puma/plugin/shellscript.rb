@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
+require 'puma-plugin-shellscript'
 require 'puma'
 require 'puma/plugin'
 
-Puma::Plugin.create do
+::Puma::Plugin.create do
   def start(launcher)
     @child_pid = nil
 

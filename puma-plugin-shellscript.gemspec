@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require_relative 'lib/puma/plugin/shellscript/version'
+require_relative 'lib/puma-plugin-shellscript'
 
 Gem::Specification.new do |spec|
   spec.name = 'puma-plugin-shellscript'
-  spec.version = Puma::Plugin::Shellscript::VERSION
+  spec.version = PumaPluginShellscript::VERSION
   spec.authors = ['jiikko']
   spec.email = ['n905i.1214@gmail.com']
 
@@ -32,7 +32,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   # Uncomment to register a new dependency of your gem
-  # spec.add_dependency "example-gem", "~> 1.0"
+  spec.add_dependency "puma"
 
   # For more information and examples about making a new gem, check out our
   # guide at: https://bundler.io/guides/creating_gem.html

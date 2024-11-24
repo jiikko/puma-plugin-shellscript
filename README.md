@@ -22,8 +22,8 @@ gem install puma-plugin-shellscript
 plugin :shellscript if ENV['PUMA_PLUGIN_SHELLSCRIPT'].present?
 ```
 
-```
-PUMA_PLUGIN_SHELLSCRIPT='echo test!!!!; sleep 5' be rails s
+```bash
+PUMA_PLUGIN_SHELLSCRIPT='echo test!!!!; sleep 5' bundle exec rails server
 ```
 
 ```

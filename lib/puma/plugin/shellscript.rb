@@ -21,7 +21,7 @@ require 'fileutils'
             rescue Errno::ESRCH, Errno::ECHILD => e
               puts "[puma plugin shellscript] Failed to kill process: #{e.message}"
             ensure
-              File.delete(pid_file) if File.exist?(pid_file)
+              FileUtils.rm_f(pid_file)
             end
           else
             puts '[puma plugin shellscript] No valid child process PID to kill'
@@ -48,7 +48,7 @@ require 'fileutils'
         else
           puts "[puma plugin shellscript] Command failed with status: #{status.exitstatus}"
         end
-        File.delete(pid_file) if File.exist?(pid_file)
+        FileUtils.rm_f(pid_file)
 
         sleep 2
       rescue Errno::EIO => e

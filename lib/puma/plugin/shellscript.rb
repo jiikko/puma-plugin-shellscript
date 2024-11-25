@@ -48,12 +48,11 @@ require 'fileutils'
         else
           puts "[puma plugin shellscript] Command failed with status: #{status.exitstatus}"
         end
+        File.delete(pid_file) if File.exist?(pid_file)
 
         sleep 2
       rescue Errno::EIO => e
         Rails.logger.error "[puma plugin shellscript] Error: #{e}"
-      ensure
-        File.delete(pid_file) if File.exist?(pid_file)
       end
     end
   end
